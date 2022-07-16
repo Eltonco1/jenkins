@@ -8,7 +8,7 @@ node {
         sh "docker build -t tawfiq15/httpd-cent:${build_number} ."
     }
 
-    stage ('Docker Push){
+    stage ('Docker Push'){
        sh " docker push tawfiq15/httpd-cent:${build_number} "    
     }
 }
