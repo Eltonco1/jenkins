@@ -11,4 +11,8 @@ node {
     stage ('Docker Push'){
        sh " docker push tawfiq15/httpd-cent:${build_number} "    
     }
+
+    stage ('Docker Remove Image from Jenkins sever'){
+    sh " docker rmi -f tawfiq15/httpd-cent:${build_number}"
+    }
 }
