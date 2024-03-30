@@ -1,18 +1,19 @@
 node {
     
     stage('Git Clone Repo'){
-        git branch: 'main', credentialsId: 'git', url: 'https://github.com/stm1510/jenki.git'
+        git branch: 'main', credentialsId: 'git', url: 'https://github.com/Eltonco1/jenkins.git'
     }
     
     stage ('Docker Build'){
-        sh "docker build -t tawfiq15/httpd-cent:7 ."
+        sh "sudo docker build -t onasanyatobby/elton_image:${BUILD_NUMBER} ."
     }
 
-    stage ('Docker Push'){
-       sh " docker push tawfiq15/httpd-cent:7 "    
+    stage ('Docker Run'){
+       sh "sudo docker run -itd --name elton_${BUILD_NUMBER} -p ${BUILD_NUMBER}:80 onasanyatobby/elton_image:${BUILD_NUMBER}  /bin/bash "    
     }
+    stage ('Docker push'){
+       sh "sudo docker push onasanyatobby/elton_image:${BUILD_NUMBER} "    
+    }
+    
 
-    stage ('Docker Remove Image from Jenkins sever'){
-    sh " docker rmi -f tawfiq15/httpd-cent:7"
-    }
 }
