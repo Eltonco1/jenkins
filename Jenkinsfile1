@@ -1,0 +1,7 @@
+ stage ('Ansible file'){
+       sh "sudo cp Ansible /etc/ansible "    
+       sh "sudo cp hosts /etc/ansible " 
+    }
+    stage ('Ansible connect'){
+       sh "sudo ansible all -m ping "    
+    }
