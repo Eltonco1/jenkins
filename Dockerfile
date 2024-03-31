@@ -1,10 +1,6 @@
 FROM centos:7
-
-RUN yum -y install httpd
-RUN yum -y install openssh-server openssh-clients
-
-COPY ./tawfiq/ /var/www/html
-
-EXPOSE 80 22
-
-CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
+RUN useradd -m tawfiq -g wheel -s /bin/bash 
+EXPOSE 22 80
+RUN echo "root:tawfiq" | chpasswd
+CMD ["/usr/sbin/sshd","-D"]
+CMD ["/usr/sbin/httpd","-D"]
