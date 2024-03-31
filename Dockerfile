@@ -4,6 +4,6 @@ RUN yum -y install httpd
 
 COPY ./tawfiq/ /var/www/html
 
-EXPOSE 80
+EXPOSE 80, 22
 
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
