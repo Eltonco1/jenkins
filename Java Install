@@ -1,0 +1,2 @@
+sudo yum update
+sudo yum install java-17-amazon-corretto-devel
